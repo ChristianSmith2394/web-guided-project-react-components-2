@@ -2,7 +2,6 @@ import React from 'react'
 import PetsList from './PetsList'
 
 export default function Friend(props) {
-  console.log(props);
   return (
     <div className='friend-friends container'>
       {/* 👉 2- Fix the JSX so it displays real info coming into the component */}
@@ -11,7 +10,9 @@ export default function Friend(props) {
           <h3>Name: {props.friend.name}</h3>
           <p>Age: {props.friend.age}</p>
 
-          <p>Married: {props.friend.married ? "yes" : "no"} <button>change</button></p>
+          <p>Married: {props.friend.married ? "yes" : "no"} 
+            <button onClick={() => props.changeStatus(props.friend.id)}>change</button>
+          </p>
           <div>Likes:
             <ul>
               {/* 👉 3- Loop over the friend's hobbies and generate <li/> elements as you go */}
