@@ -38,6 +38,17 @@ export default function App() {
     setFriends(updatedFriends);
   }
 
+  const getFilteredFriends = () => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return friends;
+
+    const filteredFriends = friends.filter(friend => {
+      return friend.name.toLowerCase().includes(term);
+    })
+
+    return filteredFriends;
+  }
+
   // STRETCH - Make a helper function that returns
   // a filtered array of friends data (filtering by search term)
 
@@ -48,7 +59,7 @@ export default function App() {
       <Search setSearchTerm={setSearchTerm} />
       {/* 👉 7- Render the FriendsList component */}
       {/* What prop/props does FriendsList need? */}
-      <FriendsList friends={friends} changeStatus={changeStatus} />
+      <FriendsList friends={getFilteredFriends()} changeStatus={changeStatus} />
     </div>
   )
 }
